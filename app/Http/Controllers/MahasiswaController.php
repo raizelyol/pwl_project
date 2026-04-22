@@ -31,7 +31,6 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
-
         Mahasiswa::create($data);
 
         return redirect()->action([MahasiswaController::class, 'index']);
@@ -70,8 +69,11 @@ class MahasiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mahasiswa $mahasiswa)
+    public function destroy($id)
     {
-         Mahasiswa::where()->delete();
+        
+         Mahasiswa::find($id)->delete();
+
+         return redirect()->action([MahasiswaController::class, 'index']);
     }
 }
