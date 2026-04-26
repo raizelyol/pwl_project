@@ -19,12 +19,12 @@
     <tr>
         <td>Tempat Lahir</td>
         <td>:</td>
-        <td><input type="text" name="Tempat_lahir"></td>
+        <td><input type="text" name="Tempat_Lahir"></td>
     </tr>
     <tr>
         <td>Tanggal Lahir</td>
         <td>:</td>
-        <td><input type="text" name="Tanggal_lahir"></td>   
+        <td><input type="text" name="Tanggal_Lahir"></td>   
     </tr>
     <tr>
         <td>Alamat</td>
