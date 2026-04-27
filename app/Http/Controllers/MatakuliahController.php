@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\dosen;
+use App\Models\matakuliah;
 use Illuminate\Http\Request;
 
-class DosenController extends Controller
+class MatakuliahController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dosen.index', [
-            'dosen' => dosen::all()
+        return view('matakuliah.index', [
+            'matakuliah' => matakuliah::all()
         ]);
     }
 
@@ -22,7 +22,7 @@ class DosenController extends Controller
      */
     public function create()
     {
-        return view('dosen.create', []);
+        return view('matakuliah.create', []);
     }
 
     /**
@@ -31,9 +31,9 @@ class DosenController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        dosen::create($data);
+        matakuliah::create($data);
 
-        return redirect()->action([DosenController::class, 'index']);
+        return redirect()->action([MatakuliahController::class, 'index']);
     }
 
     /**
@@ -41,7 +41,7 @@ class DosenController extends Controller
      */
     public function show($id)
     {
-        return dosen::find($id);
+        return matakuliah::find($id);
     }
 
     /**
@@ -49,8 +49,8 @@ class DosenController extends Controller
      */
     public function edit($id)
     {
-        return view('dosen.edit', [
-            'dosen' => dosen::find($id)
+        return view('matakuliah.edit', [
+            'matakuliah' => matakuliah::find($id)
         ]);
     }
 
@@ -61,9 +61,9 @@ class DosenController extends Controller
     {
         $data = $request->except('_token', 'id', '_method');
 
-        dosen::find($id)->update($data);
+        matakuliah::find($id)->update($data);
 
-        return redirect()->action([DosenController::class, 'index']);
+        return redirect()->action([MatakuliahController::class, 'index']);
     }
 
     /**
@@ -72,8 +72,8 @@ class DosenController extends Controller
     public function destroy($id)
     {
         
-         dosen::find($id)->delete();
+         matakuliah::find($id)->delete();
 
-         return redirect()->action([DosenController::class, 'index']);
+         return redirect()->action([MatakuliahController::class, 'index']);
     }
 }

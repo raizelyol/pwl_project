@@ -6,5 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class dosen extends Model
 {
-    protected $table='tabledosen';
+    protected $table='table_dosen';
+
+    protected $fillable = [
+        'Fullname',
+        'NIP',
+        'NIDN',
+        'Pendidikan_Terakhir',
+        'Jurusan_Id',
+        'Tempat_Lahir',
+        'Tanggal_Lahir',
+        'Alamat'
+    ];
+
 }
