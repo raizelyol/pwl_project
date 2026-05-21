@@ -7,7 +7,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
 Route::get('/mahasiswa/{id}', [MahasiswaController::class, 'show']);
 Route::get('/mahasiswa-create', [MahasiswaController::class, 'create'])->name('mahasiswa.add');
 Route::post('/mahasiswa', [MahasiswaController::class, 'store'])->name('mahasiswa.save');
