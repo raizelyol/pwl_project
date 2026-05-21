@@ -1,4 +1,4 @@
-<form action="{{route('mahasiswa.save')}}" method="post">
+<form action="{{route('dosen.save')}}" method="post">
 @csrf
 <table>
     <tr>
@@ -7,14 +7,24 @@
         <td><input type="text" name="Fullname"></td>
     </tr>
     <tr>
-        <td>Nomor Induk Mahasiswa</td>
+        <td>Nomor Induk Pengajar</td>
         <td>:</td>
-        <td><input type="text" name="NIM"></td>
+        <td><input type="text" name="NIP"></td>
     </tr>
     <tr>
-        <td>Nomor Induk Siswa Nasional</td>
+        <td>Nomor Induk Pengajar Nasional</td>
         <td>:</td>
         <td><input type="text" name="NIDN"></td>
+    </tr>
+    <tr>
+        <td>Pendidikan Terakhir</td>
+        <td>:</td>
+        <td><input type="text" name="Pendidikan_Terakhir"></td>
+    </tr>
+    <tr>
+        <td>Jurusan ID</td>
+        <td>:</td>
+        <td><input type="text" name="Jurusan_Id"></td>
     </tr>
     <tr>
         <td>Tempat Lahir</td>

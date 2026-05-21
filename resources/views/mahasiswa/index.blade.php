@@ -18,7 +18,7 @@
         <td>{{$m->id}}</td>
         <td>{{$m->Fullname}}</td>
         <td>{{$m->NIM}}</td>
-        <td>{{$m->NIDN}}</td>
+        <td>{{$m->NISN}}</td>
         <td>{{$m->Tempat_Lahir}}</td>
         <td>{{$m->Tanggal_Lahir}}</td>
         <td>{{$m->Alamat}}</td>
@@ -29,9 +29,9 @@
             </a>
             <form action="{{route('mahasiswa.delete', $m->id)}}"  method="post">
             @csrf
-            <input type="hidden" name="id" value="{{$mahasiswa->id}}">
+            <input type="hidden" name="id" value="{{$m->id}}">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" value="Delete">
+            <input type="submit" value="Delete">
         </td>
     </tr>
     @endforeach
