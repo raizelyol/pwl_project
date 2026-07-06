@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ITBSS - Data Jurusan</title>
+    <title>ITBSS - Kartu Rencana Studi (KRS)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -19,13 +19,11 @@
         
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h3 class="fw-bold text-dark m-0"><i class="fa-solid fa-layer-group text-primary me-2"></i>Data Jurusan</h3>
+                <h3 class="fw-bold text-dark m-0"><i class="fa-solid fa-file-signature text-primary me-2"></i>Data KRS Mahasiswa</h3>
                 <p class="text-muted small m-0">Portal Akademik Kampus ITBSS</p>
             </div>
             
-            <a href="{{route('jurusan.add')}}"> 
-                <input type="button" class="btn btn-primary px-4 fw-bold shadow-sm" value="Create">
-            </a>
+            <span class="badge bg-primary px-3 py-2 fw-semibold">Tahun Akademik Aktif</span>
         </div>
 
         <div class="table-responsive">
@@ -33,28 +31,32 @@
                 <thead class="thead-dark">
                     <tr>
                         <th class="py-3 px-3">No</th>
-                        <th class="py-3">Kode Jurusan</th>
-                        <th class="py-3">Nama Jurusan</th>
-                        <th class="py-3">Tanggal Dibuat</th>
+                        <th class="py-3">NIM</th>
+                        <th class="py-3">Nama Mahasiswa</th>
+                        <th class="py-3">Tahun Ajaran</th>
+                        <th class="py-3">Semester</th>
+                        <th class="py-3">Total SKS</th>
                         <th class="py-3 text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($jurusan as $j)
+                    @foreach ($krs as $k)
                     <tr>
-                        <td class="fw-bold px-3">{{$j->id}}</td>
-                        <td><span class="badge bg-primary px-2.5 py-1.5 fw-bold">{{$j->Kode_Jurusan}}</span></td>
-                        <td class="fw-semibold text-dark">{{$j->Nama_Jurusan}}</td>
-                        <td class="text-muted small">{{$j->created_at}}</td>
+                        <td class="fw-bold px-3">{{$k->id}}</td>
+                        <td class="fw-bold text-primary">{{$k->mahasiswa->NIM}}</td>
+                        <td class="fw-semibold text-dark">{{$k->mahasiswa->Fullname}}</td>
+                        <td><span class="badge bg-secondary px-2 py-1">{{$k->tahun_ajaran}}</span></td>
+                        <td>Semester {{$k->semester}}</td>
+                        <td><span class="badge bg-info text-dark fw-bold">{{$k->total_sks}} SKS</span></td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-1">
-                                <a href="{{route('jurusan.update', $j->id)}}"> 
-                                    <input type="button" class="btn btn-sm btn-warning fw-semibold px-3" value="Edit">
+                                <a href="{{ action([App\Http\Controllers\KRSController::class, 'show'], $k->id)}}" target="_blank">
+                                    <input type="button" class="btn btn-sm btn-success fw-semibold px-3" value="View">
                                 </a>
                                 
-                                <form action="{{route('jurusan.delete', $j->id)}}" method="post" class="m-0">
+                                <form action="{{ action([App\Http\Controllers\KRSController::class, 'destroy'], $k->id)}}" method="post" class="m-0">
                                     @csrf
-                                    <input type="hidden" name="id" value="{{$j->id}}">
+                                    <input type="hidden" name="id" value="{{$k->id}}">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="submit" class="btn btn-sm btn-danger fw-semibold px-3" value="Delete">
                                 </form>
