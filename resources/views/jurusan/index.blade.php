@@ -69,6 +69,15 @@
     </div>
 </div>
 
+<div>
+    <h3 class="fw-bold text-dark m-0">...</h3>
+    <p class="text-muted small m-0">Portal Academic Kampus ITBSS</p>
+    
+    <a href="{{ route('dashboard') }}" class="btn btn-sm btn-outline-secondary mt-2">
+        <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Dashboard
+    </a>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
